@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block css %}STL_imageeditor.css{% endblock %}
+
+{% block content %}
+    <footer class="page__footer">
+        <button class="page__footer-button">
+            <span class="icon">🅰️</span> Текст
+        </button>
+        <button class="page__footer-button">
+            <span class="icon">➕</span> Картинка
+        </button>
+        <button class="page__footer-button">
+            <span class="icon">🔲</span> Демотиватор
+        </button>
+    </footer>
+{% endblock %}
+
+{% block script %}
+    <script>
+        document.getElementById('image-input').addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const imagePreview = document.getElementById('image-preview');
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+{% endblock %}

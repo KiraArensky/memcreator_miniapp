@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memcreator</title>
+    <link rel="stylesheet" href="static/{% block css %}{% endblock %}">
+</head>
+<body>
+<div class="page">
+    <header class="page__header">
+        <button class="page__back-button">←</button>
+        <button class="page__next-button">Далее</button>
+    </header>
+    <main class="page__content">
+        <div class="image-container">
+            <img id="image-preview" class="image-container__preview" src="#" alt="Ваше изображение"
+                 style="display: none;">
+            <input type="file" id="image-input" class="image-container__input" accept="image/*">
+        </div>
+    </main>
+{% block content %}
+{% endblock %}
+</div>
+{% block script %}
+{% endblock %}
+</main>
+</body>
+</html>
