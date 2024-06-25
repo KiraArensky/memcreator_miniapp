@@ -4,23 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memcreator</title>
-    <link rel="stylesheet" href="static/{% block css %}{% endblock %}">
+    <link rel="stylesheet" href="static/css/{% block css %}{% endblock %}">
 </head>
 <body>
 <div class="page">
     <header class="page__header">
-        <button class="page__back-button">←</button>
-        <button class="page__next-button">Далее</button>
+        {% if not image_url %}
+            <h1 class="page__title">@createyourmem_bot</h1>
+        {% endif %}
+        {% if image_url %}
+            <button class="page__back-button">←</button>
+            <button class="page__save-button">Сохранить</button>
+        {% endif %}
+
     </header>
     <main class="page__content">
         <div class="image-container">
-            <img id="image-preview" class="image-container__preview" src="#" alt="Ваше изображение"
-                 style="display: none;">
-            <input type="file" id="image-input" class="image-container__input" accept="image/*">
+
+            {% if image_url %}
+                <img id="image-preview" class="image-container__preview" src="{{ image_url }}" alt="Ваше изображение">
+            {% else %}
+                <img id="image-preview" class="image-container__preview" src="#" alt="Ваше изображение"
+                     style="display: none;">
+            {% endif %}
+            {% if not image_url %}
+                <form method="post" enctype="multipart/form-data">
+                    <input type="file" name="file" id="image-input" class="image-container__input" accept="image/*">
+                    <button type="submit">Загрузить</button>
+                </form>
+            {% endif %}
         </div>
     </main>
-{% block content %}
-{% endblock %}
+    {% block content %}
+    {% endblock %}
 </div>
 {% block script %}
 {% endblock %}
