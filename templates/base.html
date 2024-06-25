@@ -14,7 +14,7 @@
         {% endif %}
         {% if image_url %}
             <button class="page__back-button">←</button>
-            <button class="page__save-button">Сохранить</button>
+            <button class="page__save-button" id="save-button">Сохранить</button>
         {% endif %}
 
     </header>
@@ -22,12 +22,10 @@
         <div class="image-container">
 
             {% if image_url %}
-                <img id="image-preview" class="image-container__preview" src="{{ image_url }}" alt="Ваше изображение">
+                <img id="image-preview" class="image-container__preview" src="{{ image_url }}"
+                     alt="Ваше изображение">
+                <canvas id="canvas"></canvas>
             {% else %}
-                <img id="image-preview" class="image-container__preview" src="#" alt="Ваше изображение"
-                     style="display: none;">
-            {% endif %}
-            {% if not image_url %}
                 <form method="post" enctype="multipart/form-data">
                     <input type="file" name="file" id="image-input" class="image-container__input" accept="image/*">
                     <button type="submit">Загрузить</button>

@@ -65,7 +65,28 @@ body {
     padding: 10px;
 }
 
+.page__content {
+    position: relative;
+}
+
+
+
+@media (max-width: 600px) {
+    .page {
+        max-width: 100%;
+    }
+}
+
+.page__content {
+    position: relative;
+}
+
 .image-container {
+    position: relative;
+}
+
+#canvas {
+    cursor: pointer;
     background-color: #f2e8d8;
     width: auto;
     max-width: 400px;
@@ -79,19 +100,6 @@ body {
     padding: 10px;
 }
 
-.image-container__preview {
-    max-width: 385px;
-    max-height: 635px;
-    object-fit: contain;
-}
-
-@media (max-width: 600px) {
-    .page {
-        max-width: 100%;
-    }
-
-    .image-container {
-        max-width: 100%;
-        height: auto;
-    }
+#image-preview {
+    display: none;
 }
